@@ -2,6 +2,7 @@ package com.example.springboot.service;
 
 import com.example.springboot.model.User;
 import com.example.springboot.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,18 +20,19 @@ public class UserService {
     }
 
     public User findById(Long id) {
-        return userRepository.findById(id).orElse(null);
+        return userRepository.getById(id);
     }
 
     public List<User> findAll() {
-        return (List<User>) userRepository.findAll();
+        return userRepository.findAll();
     }
+
 
     public User saveUser(User user) {
         return userRepository.save(user);
     }
 
-    public void deleteUser(Long id) {
+    public void deleteById(Long id) {
         userRepository.deleteById(id);
     }
 }
